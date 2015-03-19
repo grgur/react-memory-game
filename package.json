@@ -1,0 +1,35 @@
+{
+    "name": "react-memory-game",
+    "version": "1.0.0",
+    "devDependencies": {
+        "gulp": "latest",
+        "gulp-run": "latest",
+        "gulp-less": "latest",
+        "gulp-concat": "latest",
+        "gulp-uglify": "latest",
+        "gulp-minify-css": "latest",
+        "gulp-eslint": "latest",
+        "browser-sync": "latest",
+        "browserify": "latest",
+        "vinyl-source-stream": "latest",
+        "vinyl-buffer": "latest",
+        "reactify": "latest",
+        "del": "latest"
+    },
+    "paths": {
+        "less": "assets/less/*.less",
+        "js": "./app/**/*.js",
+        "jsx": "./app/**/*.jsx",
+        "app": "./app/app.js",
+        "html": "*.html"
+    },
+    "dest": {
+        "style": "style.css",
+        "app": "app.js",
+        "dist": "dist"
+    },
+    "browser": {
+        "react": "./bower_components/react/react.js",
+        "lodash": "./bower_components/lodash/lodash.js"
+    }
+}
