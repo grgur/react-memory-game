@@ -1,0 +1,63 @@
+/* simple */
+
+@import "mixins.less";
+.front, .back {
+    width: 120px;
+    height: 150px;
+    .border-radius(8px);
+}
+.card {
+    font-size: 5em;
+    color: #F7E696;
+    cursor: pointer;
+    margin: 0.05em;
+    user-select: none;
+    position: relative;
+    width: 120px;
+    height: 150px;
+    -webkit-user-select: none;
+    vertical-align: baseline;
+    .perspective(1000);
+    // .transform-style(preserve-3d);
+    &.hover {
+        .back {
+            .rotateY(0deg);
+        }
+        .front {
+            .rotateY(180deg);
+        }
+    }
+}
+.front, .back {
+    .backface-visibility(hidden);
+    .transition(0.6s);
+    .transform(rotateY(0deg));
+    .transform-style(preserve-3d);
+    position: absolute;
+    top: 0;
+    left: 0;
+    &:before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        .transform(translateX(-50%) translateY(-50%));
+        text-shadow: 0px 0px #F7E696, -1px -1px rgba(0,0,0,0.25);
+    }
+}
+.front {
+    .transform(rotateY(0deg));
+    background: #6E7E98;
+    z-index: 2;
+}
+.back {
+    background: #C65F62;
+    .transform(rotateY(-180deg));
+    &.found {
+        background: #83AF9B;
+        
+        .inner-shadow(-1px, 1px, 0, 0, 0.15);
+        &:before {
+          opacity: 0.25;
+        }
+    }
+}
