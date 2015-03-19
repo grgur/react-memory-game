@@ -134,7 +134,7 @@ var Board = React.createClass({displayName: "Board",
     },
 
     getInitialState: function () {
-        var boardSize = 10,
+        var boardSize = 12,
             allCards = Util.arrayShuffle(playingCards.slice(0)), // clone playing cards and randomize
             chosenCards = allCards.slice(0, boardSize / 2), // choose just enough for the target board size
             fullDeck = chosenCards.concat(chosenCards); //add a pair to each card
@@ -151,14 +151,18 @@ var Board = React.createClass({displayName: "Board",
     },
 
     render: function () {
-        return (
-            React.createElement("div", {className: "board"}, 
-            this.state.cards.map(function (card, i) {
-                var ref = 'card' + i,
-                    boundClick = this.onCardClick.bind(this, i);
+        var won = this.state.remaining < 1,
+            boardCls = "board" + ( won ? " win" : "" );
 
-                return React.createElement(Card, {icon: card, key: i, ref: ref, onClick: boundClick});
-            }, this)
+        return (
+            React.createElement("div", {className: boardCls}, 
+                React.createElement("div", {className: "win"}, "Win!"), 
+                this.state.cards.map(function (card, i) {
+                    var ref = 'card' + i,
+                        boundClick = this.onCardClick.bind(this, i);
+
+                    return React.createElement(Card, {icon: card, key: i, ref: ref, onClick: boundClick});
+                }, this)
             )
         );
     }

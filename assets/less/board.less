@@ -6,4 +6,22 @@
   .justify-content(center);
 
   -webkit-font-smoothing: antialiased;
+
+  .win {
+    display: none;
+  }
+
+  &.win {
+    .win {
+      position: absolute;
+      display: block;
+      z-index: 100;
+      font-size: 2em;
+      margin-left: auto;
+      margin-right: auto;
+      left: 50%;
+      top: 50%;
+      margin-top: -0.5em;
+    }
+  }
 }
